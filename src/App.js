@@ -5,6 +5,7 @@ import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 import NameList from "./pages/NameList";
 import Profile from "./pages/Profile";
 
+
 function App() {
   return (
     <Router>
