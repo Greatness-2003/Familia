@@ -1,69 +1,59 @@
 import {useLocation} from 'react-router-dom';
-import { useState } from "react";
 import { Link} from "react-router-dom";
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-const InlineEdit = ({ value, setValue }) => {
-    const onChange = (event) => setValue(event.target.value);
-    const onKeyDown = (event) => {
-        if (event.key === "Enter" || event.key === "Escape") {
-          event.target.blur();
-        }
-    };
-    return (
-      <input
-        type="text"
-        aria-label="Field name"
-        value={value}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-      />
-    );
-}
 
+export const theme = createTheme({
+    typography: {
+        fontFamily: '"Helvetica Neue"',
+            body1: {
+                fontSize: 20
+            },
+            h4: {
+                fontSize: 30
+            },
+            h2: {
+                fontSize: 50
+            },
+            button: {
+                fontStyle: 'italic',
+                fontSize: 25
+            }
+    }
+});
 function Profile() {
-    const [value, setValue] = useState();
     const location = useLocation();
     let child = location.state
     return (
-        <Card>
-          <Typography variant='h4' component='div'>
-            {child.nomen}: { child.age }
-          </Typography>
-          <Typography variant='body1'>
-            { child.position }
-          </Typography>
-          <Typography variant='body1'>
-          { child.appearance }
-          </Typography>
-          <InlineEdit value={value} setValue={setValue} />
-          <Typography variant='body1'>
-          { child.character }
-          </Typography>
-          <Typography variant='body1'>
-          { child.education }
-          </Typography>
-          <img src={child.image} className='card-image' alt=''/>
-          <Link to='/NameList'> 
-            <Button> Back to list </Button>
-            </Link>
+        <Card > 
+            <ThemeProvider theme={theme}>
+            <Typography variant='h4' component='div' align="center">
+                {child.nomen}: { child.age }
+            </Typography>
+            <Typography align="center">
+                <img src={child.image} className='card-image' alt=''justify="center"/> 
+            </Typography>
+            <Typography variant='body1'align="center">
+                Position in family: { child.position }
+            </Typography>
+            <Typography variant='body1'align="center">
+            Appearance: { child.appearance }
+            </Typography>
+            <Typography variant='body1'align="center">
+            Character: { child.character }
+            </Typography>
+            <Typography variant='body1'align="center">
+            Education: { child.education }
+            </Typography>
+            <Link to='/NameList'align="center"> 
+                <Button> ←Back to list </Button>
+                </Link>
+            </ThemeProvider>
         </Card>
     );
 }  
 
 export default Profile;
-
-{/* <div className="card m-1 p-2">
-<div className="card-body">
-    <div className="card-title">{child.nomen}: { child.age }</div>
-    <div className="card-text"> { child.position }</div>
-    <div className="card-text"> { child.appearance }</div>
-    <InlineEdit value={value} setValue={setValue} />
-    <div className="card-text"> { child.character }</div>
-    <div className="card-text"> { child.education }</div>
-    <img src={child.image} className='card-image' alt=''/>
-    <Link to='/NameList' className="btn"> Back to list </Link>
-</div>
-</div> */}

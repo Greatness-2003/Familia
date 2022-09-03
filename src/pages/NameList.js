@@ -2,6 +2,19 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
 import '@fontsource/roboto/400.css';
+import Typography from '@mui/material/Typography';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+
+const theme = createTheme({
+    typography: {
+        fontFamily: '"Helvetica Neue"',
+            button: {
+                fontStyle: 'italic',
+                fontSize: 25
+            }
+        }
+});
 
 const family ={
     title: "Emmanuel-king Children: Who Are They?",
@@ -12,7 +25,7 @@ const family ={
         "age": "24",
         "appearance": "Stout, dark, buff",
         "character": "Loves food, ",
-        "education": "College: Graduated",
+        "education": "Covenant university- Graduated",
         "image": 'images/Praise.png'
       },
       "2": {
@@ -21,7 +34,7 @@ const family ={
         "age": "23",
         "appearance": "Tall, lean",
         "character": "",
-        "education": "College: Attending",
+        "education": "University of Benin- Attending",
         "image": 'images/Shalom.png'
       },
       "3": {
@@ -30,7 +43,7 @@ const family ={
         "age": "21",
         "appearance": "Full hair, tall, lean but buff",
         "character": "Full of himself, smart",
-        "education": "College: Attending",
+        "education": "Northwestern university- Attending",
         "image": 'images/Fortune.png'
       },
       "4": {
@@ -39,7 +52,7 @@ const family ={
         "age": "19",
         "appearance": "Plump, short-haired, medium-heighted",
         "character": "Sensible",
-        "education": "College: Attending",
+        "education": "College of William and Mary- Attending",
         "image": 'images/Greatness.png'
       },
       "5": {
@@ -48,7 +61,7 @@ const family ={
         "age": "18",
         "appearance": "Fatty-bobo, cute",
         "character": "Annoying",
-        "education": "A-level: Attending",
+        "education": "African Leadership Academy- Attending",
         "image": 'images/Peculiar.png'
       }
     }
@@ -61,9 +74,13 @@ const ChildrenButton = ({ children }) => {
       Object.values(children).map(child => 
         <>
         <div>
-          <Button onClick={()=>navigate("/Profile", { state: child})}>
+        <ThemeProvider theme={theme}>
+        <Typography align='center' >
+          <Button onClick={()=>navigate("/Profile", { state: child})} align="center">
             {child.nomen}
           </Button>
+        </Typography>
+        </ThemeProvider>
         </div>
         </>
       )
@@ -75,7 +92,12 @@ const NameList = () => {
         <section>
             <ChildrenButton children ={family.children}/>
             <Link to='/' className="btn">
-            <Button> Back Home </Button> </Link>
+            <ThemeProvider theme={theme}>
+            <Typography align='center' >
+            <Button> Back Home </Button>
+            </Typography>
+            </ThemeProvider>
+            </Link> 
         </section>
     );  
 };
