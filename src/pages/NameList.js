@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button';
+import '@fontsource/roboto/400.css';
 
 const family ={
     title: "Emmanuel-king Children: Who Are They?",
@@ -10,7 +12,8 @@ const family ={
         "age": "24",
         "appearance": "Stout, dark, buff",
         "character": "Loves food, ",
-        "education": "College: Graduated"
+        "education": "College: Graduated",
+        "image": 'images/Praise.png'
       },
       "2": {
         "nomen": "Shalom",
@@ -18,7 +21,8 @@ const family ={
         "age": "23",
         "appearance": "Tall, lean",
         "character": "",
-        "education": "College: Attending"
+        "education": "College: Attending",
+        "image": 'images/Shalom.png'
       },
       "3": {
         "nomen": "Fortune",
@@ -26,7 +30,8 @@ const family ={
         "age": "21",
         "appearance": "Full hair, tall, lean but buff",
         "character": "Full of himself, smart",
-        "education": "College: Attending"
+        "education": "College: Attending",
+        "image": 'images/Fortune.png'
       },
       "4": {
         "nomen": "Greatness",
@@ -34,7 +39,8 @@ const family ={
         "age": "19",
         "appearance": "Plump, short-haired, medium-heighted",
         "character": "Sensible",
-        "education": "College: Attending"
+        "education": "College: Attending",
+        "image": 'images/Greatness.png'
       },
       "5": {
         "nomen": "Peculiar",
@@ -42,7 +48,8 @@ const family ={
         "age": "18",
         "appearance": "Fatty-bobo, cute",
         "character": "Annoying",
-        "education": "A-level: Attending"
+        "education": "A-level: Attending",
+        "image": 'images/Peculiar.png'
       }
     }
   };
@@ -54,9 +61,9 @@ const ChildrenButton = ({ children }) => {
       Object.values(children).map(child => 
         <>
         <div>
-          <button onClick={()=>navigate("/Profile", { state: child})}>
+          <Button onClick={()=>navigate("/Profile", { state: child})}>
             {child.nomen}
-          </button>
+          </Button>
         </div>
         </>
       )
@@ -67,7 +74,8 @@ const NameList = () => {
     return (
         <section>
             <ChildrenButton children ={family.children}/>
-            <Link to='/' className="btn"> Back Home</Link>
+            <Link to='/' className="btn">
+            <Button> Back Home </Button> </Link>
         </section>
     );  
 };

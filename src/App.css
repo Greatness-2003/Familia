@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+input {
+  background-color: transparent;
+  border: 0;
+  padding: 8px;
+}
+
+input:hover {
+  background-color: #d3d3d3;
+  cursor: pointer;
+}

@@ -6,14 +6,17 @@ import NameList from "./pages/NameList";
 import Profile from "./pages/Profile";
 
 
+
 function App() {
+  
+
   return (
     <Router>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path ='NameList' element={<NameList />} />
         <Route path="/Profile" element={<Profile />} />
-      </Routes>
+        </Routes>
     </Router>
   );
 } 
