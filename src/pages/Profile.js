@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-
+    
 export const theme = createTheme({
     typography: {
         fontFamily: '"Helvetica Neue"',
@@ -24,6 +24,7 @@ export const theme = createTheme({
             }
     }
 });
+
 function Profile() {
     const location = useLocation();
     let child = location.state
@@ -34,7 +35,7 @@ function Profile() {
                 {child.nomen}: { child.age }
             </Typography>
             <Typography align="center">
-                <img src={child.image} className='card-image' alt=''justify="center"/> 
+                <img src={child.image} className='card-image' alt=''justify="center"/>     
             </Typography>
             <Typography variant='body1'align="center">
                 Position in family: { child.position }
